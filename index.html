@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expresiones Regulares</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container my-5">
+        
+        <h1 class="text-center mb-4">Expresiones Regulares</h1>
+
+        
+        <section class="mb-5">
+            <h2>Introducción a las expresiones regulares en JavaScript</h2>
+            <div class="accordion" id="introAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            ¿Qué son las expresiones regulares?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Las expresiones regulares (a menudo llamadas RegExp o RegEx) son un sistema para buscar, capturar o reemplazar texto utilizando patrones. Estos patrones permiten realizar una búsqueda de texto de una forma relativamente sencilla y abstracta, de forma que abarca una gran cantidad de posibilidades que de otra forma sería imposible o muy extensa y compleja.
+                            Estos patrones se representan mediante una cadena de texto, donde ciertos símbolos tienen un significado especial. 
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            ¿Cómo se utilizan en JavaScript?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            En JavaScript, las expresiones regulares se escriben entre dos barras diagonales. Ejemplo, /cosa/ busca la palabra "cosa" en un texto. También se puede usar el constructor new RegExp() para crearlas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-5">
+            <h2>Sintaxis de las expresiones regulares en JavaScript</h2>
+            <div class="accordion" id="syntaxAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="syntaxOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#syntaxCollapseOne" aria-expanded="true" aria-controls="syntaxCollapseOne">
+                            Caracteres simples
+                        </button>
+                    </h2>
+                    <div id="syntaxCollapseOne" class="accordion-collapse collapse show" aria-labelledby="syntaxOne" data-bs-parent="#syntaxAccordion">
+                        <div class="accordion-body">
+                            Son letras, números o símbolos que se buscan literalmente en el texto. Por ejemplo, el patrón /abc/ coincide con las combinaciones de caracteres en cadenas solo cuando la secuencia exacta "abc"
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="syntaxTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#syntaxCollapseTwo" aria-expanded="false" aria-controls="syntaxCollapseTwo">
+                            Caracteres especiales
+                        </button>
+                    </h2>
+                    <div id="syntaxCollapseTwo" class="accordion-collapse collapse" aria-labelledby="syntaxTwo" data-bs-parent="#syntaxAccordion">
+                        <div class="accordion-body">
+                            Estos tienen un significado especial en las expresiones regulares. Ayudan a definir patrones más avanzados. <br>
+                              <ul class="list-group">
+                                <li class="list-group-item">.: Coincide con cualquier carácter excepto saltos de línea.</li>
+                                <li class="list-group-item"> \d: Coincide con cualquier dígito (0-9).</li>
+                                <li class="list-group-item">\w: Coincide con cualquier carácter de palabra (letras, números y guion bajo).</li>
+                                <li class="list-group-item">\s: Coincide con cualquier espacio en blanco.</li>
+                                <li class="list-group-item">^: Indica el inicio de la cadena.</li>
+                                <li class="list-group-item">$: Indica el final de la cadena.</li>
+                              </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="syntaxThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#syntaxCollapseThree" aria-expanded="false" aria-controls="syntaxCollapseThree">
+                            ¿Cómo se construyen los patrones?
+                        </button>
+                    </h2>
+                    <div id="syntaxCollapseThree" class="accordion-collapse collapse" aria-labelledby="syntaxThree" data-bs-parent="#syntaxAccordion">
+                        <div class="accordion-body">
+                            Se combinan caracteres y caracteres especiales para formar patrones complejos. <br>
+                            Ejemplo: /\d{3}-\d{2}-\d{4}/ coincide con un número de seguro social en formato "123-45-6789".
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mb-5">
+            <h2>Métodos de JavaScript para trabajar con expresiones regulares</h2>
+            <div class="accordion" id="introAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            exec()
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Ejecuta una búsqueda en una cadena y devuelve un array con la primera coincidencia o null si no hay coincidencias. <br>
+                            Ejemplo: /hola/.exec('hola mundo') devuelve ['hola']. 
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            test()
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Verifica si una expresión regular encuentra una coincidencia en una cadena, devolviendo true o false. <br>
+                            Ejemplo: /hola/.test('hola mundo') devuelve true.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="syntaxCollapseThree">
+                            match()
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Devuelve un array con todas las coincidencias encontradas en una cadena. <br>
+                            Ejemplo: 'hola mundo'.match(/o/g) devuelve ['o', 'o'].
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            matchAll()
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Devuelve un iterador con todas las coincidencias y sus grupos de captura. <br>
+                            Ejemplo: 'hola mundo'.matchAll(/o/g) devuelve un iterador con dos coincidencias.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            replace()
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Reemplaza las coincidencias de una expresión regular en una cadena por un nuevo texto. <br>
+                            Ejemplo: 'hola mundo'.replace(/mundo/, 'JavaScript') devuelve 'hola JavaScript'.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            replaceAll()
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Reemplaza todas las coincidencias de una expresión regular en una cadena por un nuevo texto. <br>
+                            Ejemplo: 'hola mundo mundo'.replaceAll(/mundo/g, 'JavaScript') devuelve 'hola JavaScript JavaScript'.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            search()
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Devuelve el índice de la primera coincidencia de una expresión regular en una cadena o -1 si no hay coincidencias. <br>
+                            Ejemplo: 'hola mundo'.search(/mundo/) devuelve 5.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            split()
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Divide una cadena en un array de subcadenas utilizando una expresión regular como delimitador. <br>
+                            Ejemplo: 'uno,dos,tres'.split(/,/) devuelve ['uno', 'dos', 'tres'].
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section class="mb-5">
+            <h2>Creación de una expresión regular en JavaScript</h2>
+            <div class="accordion" id="introAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Expresión regular literal 
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Se define entre barras diagonales /. Ejemplo: const regexp = /.a.o/i;
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Constructor RegExp
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Se utiliza la función constructora RegExp para crear una expresión regular. <br>
+                            Ejemplo: // Notación de objeto
+                            const regexp = new RegExp(".a.o", "i");
+                            const regexp = new RegExp(/.a.o/, "i");
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <section class="mb-5">
+            <h2>Uso de las expresiones regulares en la práctica</h2>
+            <a href="ejemplos.html" class="btn btn-primary">Ver Ejemplos</a>
+        </section>
+
+        <section class="mb-5">
+            <h2>Rendimiento y consideraciones de seguridad</h2>
+            <div class="accordion" id="securityAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="securityOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#securityCollapseOne" aria-expanded="true" aria-controls="securityCollapseOne">
+                            En cuanto a rendimiento
+                        </button>
+                    </h2>
+                    <div id="securityCollapseOne" class="accordion-collapse collapse show" aria-labelledby="securityOne" data-bs-parent="#securityAccordion">
+                        <div class="accordion-body">
+                            Las expresiones regulares pueden ser costosas en términos de rendimiento, especialmente si son complejas o se aplican a cadenas grandes. Es importante optimizarlas para evitar problemas de eficiencia.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            En cuanto a seguridad
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#introAccordion">
+                        <div class="accordion-body">
+                            Las expresiones regulares mal diseñadas pueden ser vulnerables a ataques de denegación de servicio (ReDoS), donde una entrada maliciosa puede hacer que la expresión regular consuma recursos excesivos y bloquee el sistema. Se recomienda validar y sanitizar las entradas del usuario y evitar expresiones regulares que puedan causar este tipo de vulnerabilidades.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
